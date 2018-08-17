@@ -1,0 +1,37 @@
+<div id="user_details">
+    <div>
+        <h3> Name : {{user.name | uppercase}}</h3>
+        <img ng-src="{{user.avatar_url}}">
+    </div>
+
+    <div>
+        Filter: <input name="filter" type="text" ng-model="searchTerm">
+    </div>
+
+    <select ng-model="sortTerm">
+        <option value="+name">Name</option>
+        <option value="+id">ID</option>
+        <option value="-created_at">Created Date</option>
+    </select>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>ID</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+                <th>Subscribe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in repos | filter: searchTerm | orderBy: sortTerm">
+                <td>{{repo.name}}</td>
+                <td>{{repo.id}}</td>
+                <td>{{repo.created_at}}</td>
+                <td>{{repo.updated_at}}</td>
+                <td>{{repo.subscriptions_url}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
