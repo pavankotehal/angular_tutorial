@@ -22,6 +22,6 @@
         };
     };
 
-    var app = angular.module('blogApp');
+    var app = angular.module('githubViewer');
     app.factory("github", github);
 }());
